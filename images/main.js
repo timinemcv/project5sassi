@@ -1,6 +1,8 @@
 displayView()
 productList=[]
 products=$("#products")
+
+
 function displayView(){
  $.ajax({
    type: "get",
@@ -10,6 +12,7 @@ function displayView(){
      productList = res;
      productList = productList.reverse();
     
+
      let row = "";
      for (let i = 0; i < productList.length; i++) {
        if (
@@ -18,8 +21,8 @@ function displayView(){
          productList[i].category == "Lifestyle"
        ) {
          row += `<div>
-         <a href="#" index="${i}" class="imagesSec">
-           <img src="${productList[i]["image"]}" alt=""/>
+         <a href="first.html">
+           <img src="${productList[i]["image"]}" alt="" />
          </a>
          <h4>${productList[i]["name"]}</h4>
          <p>£,${productList[i]["price"]}</p>
@@ -31,20 +34,14 @@ function displayView(){
      
 
      products.html(row);
-   }
-   ,error: function (err) {
+   },
+   error: function (err) {
      console.log(err);
      alert(err.statusText);
    },
  });
 }
-
-
- products.on("click",".imagesSec",(e)=>{
-e.preventDefault(); alert()
-  let i=$(".imagesSec").attr("index")
-console.log(productList[i])
- })
+ 
  
  let slideIndex = 1;
  showSlides(slideIndex);
